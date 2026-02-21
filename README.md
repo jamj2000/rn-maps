@@ -1,50 +1,59 @@
-# Welcome to your Expo app 👋
+# Maps App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**Aplicación de React Native con Expo Router para trabajar con Mapas de Google**
 
-## Get started
-
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Recrear el proyecto
 
 ```bash
-npm run reset-project
+npx create-expo-app maps
+npm install  zustand  expo-location react-native-maps@1.20.1
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Credenciales
 
-## Learn more
+### Google Cloud Console
 
-To learn more about developing your project with Expo, look at the following resources:
+1. Habilitar `Maps SDK for Android` en [https://console.cloud.google.com/apis/library](https://console.cloud.google.com/apis/library)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+2. Crear credenciales / Clave de API en [https://console.cloud.google.com/apis/credentials](https://console.cloud.google.com/apis/credentials)
 
-## Join the community
+3. Editamos archivo `.env` y agregamos la clave de API
 
-Join our community of developers creating universal apps.
+```bash
+GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+4. Generamos credenciales
+
+```bash
+eas credentials
+```
+
+![Credenciales](eas-credentials.png)
+
+5. Establecemos restricciones de uso de la clave de API
+
+![Restricciones de clave](restricciones-de-clave.png)
+
+6. Creamos la variable de entorno para EAS
+
+```bash
+eas env:create --name GOOGLE_MAPS_API_KEY --scope project
+```
+
+![Crear variable de entorno para EAS](eas-env-create.png)
+
+> [!NOTE]
+> - Tipo: **String** 
+> - Visibilidad: **Secret** 
+> - Environment: **preview** 
+
+```bash
+eas env:list
+```
+
+
+7. Construimos la app
+```bash
+eas build --platform android --profile preview
+```   

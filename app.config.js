@@ -11,6 +11,11 @@ export default {
         ios: {
             supportsTablet: true,
         },
+        extra: {
+            eas: {
+                projectId: "eedbcd1e-5e3b-4ca2-ae5d-b1f3401ebc7b"
+            }
+        },
         android: {
             package: 'com.jamj2000.maps',
             config: {
