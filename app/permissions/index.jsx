@@ -1,5 +1,5 @@
-import ThemedPressable from '@/components/ThemedPressable';
-import ThemedText from '@/components/ThemedText';
+import CustomPressable from '@/components/CustomPressable';
+import CustomText from '@/components/CustomText';
 import { usePermissionsStore } from '@/lib/store/usePermissions';
 import { View } from 'react-native';
 
@@ -16,11 +16,11 @@ const PermissionsScreen = () => {
         alignItems: 'center',
       }}
     >
-      <ThemedPressable onPress={requestLocationPermission}>
+      <CustomPressable onPress={requestLocationPermission}>
         Habilitar ubicación
-      </ThemedPressable>
+      </CustomPressable>
 
-      <ThemedText>Estado actual: {locationStatus}</ThemedText>
+      <CustomText>Estado actual: {locationStatus}</CustomText>
     </View>
   );
 };

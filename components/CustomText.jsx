@@ -1,21 +1,16 @@
-import { useThemeColor } from '@/lib/hooks/useThemeColor'
 import { StyleSheet, Text } from 'react-native'
 
 
 
 export default ({
   style,
-  lightColor,
-  darkColor,
   type = 'default',
   ...rest
 }) => {
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text')
 
   return (
     <Text
       style={[
-        { color },
         type === 'default' ? styles.default : undefined,
         type === 'title' ? styles.title : undefined,
         type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
